@@ -1,0 +1,11 @@
+should we define an xml schema for an xml schema ?
+
+what is namespacetarget for ?
+
+how to declare inline empty element
+
+xmllint --noout --schema schema.xsd file.xml
+
+xmlschema-validate --schema schema.xsd document.xml
+
+xmlschema-validate --version 1.1 --schema schema.xsd document.xml

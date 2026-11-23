@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<real-estate>
+    <agencies>
+        <agency>
+            <nom>Best Maison</nom>
+            <address-electronique>info@bestmaison.com</address-electronique>
+            <numero-telephone>0612345678</numero-telephone>
+        </agency>
+        <agency>
+            <nom>immobieli</nom>
+            <address-electronique>info@immobieli.com</address-electronique>
+            <numero-telephone>0687654321</numero-telephone>
+        </agency>
+    </agencies>
+    <owners>
+        <owner id='mohammed'>
+            <nom>Mohammed</nom>
+        </owner>
+    </owners>
+    <properties>
+        <property id="1">
+            <nom>Rue Amir Abdel Kader</nom>
+            <nombre-appartements>2</nombre-appartements>
+        </property>
+        <property id="2" owner-id="mohammed">
+            <nom>Rue liberte</nom>
+            <nombre-appartements>1</nombre-appartements>
+        </property>
+    </properties>
+    <flats>
+        <flat id="1" property-id="1" niveau-confort="moyen">
+            <nom>4B</nom>
+            <description>maison traditionnelle</description>
+            <tarif>1500</tarif>
+        </flat>
+        <flat id="2" property-id="1" niveau-confort="haut"  date-mise-ligne="2024-06-01">
+            <nom>2A</nom>
+            <description>maison moderne</description>
+            <tarif>3000</tarif>
+        </flat>
+    </flats>
+</real-estate>

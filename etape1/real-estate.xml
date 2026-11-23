@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<real-estate>
+    <agencies>exeml</agencies>
+    <owners>John Doe</owners>
+    <properties>123 Main St</properties>
+    <flats>4B</flats>
+</real-estate>
