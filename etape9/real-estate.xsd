@@ -1,0 +1,242 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://example.com"
+    xmlns="http://example.com"
+    elementFormDefault="qualified">
+    <xsd:import namespace="http://www.w3.org/1999/xhtml"
+        schemaLocation="xhtml1-strict.xsd" />
+    <xsd:element name="nom" type="xsd:string" />
+    <xsd:element name="real-estate">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="agencies">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="agency" type="agency" maxOccurs="unbounded" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="owners">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="owner" type="owner" maxOccurs="unbounded" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="properties">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="property" type="property" maxOccurs="unbounded" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="flats">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="flat" type="flat" maxOccurs="unbounded" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:complexType name="agency">
+        <xsd:all>
+            <xsd:element name="nom" type="xsd:string" />
+            <xsd:element name="address-electronique">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[^\s@]+@[^\s@]+\.[^\s@]+" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="numero-telephone">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="0[23567][0-9]{8}" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element ref="adresse" />
+        </xsd:all>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="owner">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="nom">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:pattern value="[\p{L}\s'\-]{2,50}" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element ref="adresse" />
+        </xsd:choice>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:assert
+            test="exists(*:nom) and (every $nom in *:nom satisfies local-name($nom/following-sibling::*) = 'adresse') and (every $adr in *:adresse satisfies local-name($adr/preceding-sibling::*) = 'nom')" />
+    </xsd:complexType>
+
+
+    <xsd:simpleType name="location">
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+    <xsd:simpleType name="equipement">
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+    <xsd:simpleType name="security">
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+    <xsd:simpleType name="comfort">
+        <xsd:restriction base="xsd:string" />
+    </xsd:simpleType>
+    <xsd:complexType name="features">
+        <xsd:sequence>
+            <xsd:element name="feature" type="xsd:string" minOccurs="2" maxOccurs="5" />
+        </xsd:sequence>
+        <xsd:attribute name="category" use="optional">
+            <xsd:simpleType>
+                <xsd:list>
+                    <xsd:simpleType>
+                        <xsd:union memberTypes="location equipement security comfort" />
+                    </xsd:simpleType>
+                </xsd:list>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="property">
+        <xsd:sequence>
+            <xsd:element name="nom" type="xsd:string" />
+            <xsd:element name="nombre-appartements">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:nonNegativeInteger">
+                        <xsd:minInclusive value="1" />
+                        <xsd:maxInclusive value="1500" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="features" type="features" minOccurs="0" />
+            <xsd:element ref="adresse" />
+            <xsd:element name="description" minOccurs="0">
+                <xsd:complexType mixed="true">
+                    <xsd:sequence>
+                        <xsd:any namespace="http://www.w3.org/1999/xhtml"
+                            processContents="strict"
+                            minOccurs="0"
+                            maxOccurs="unbounded"
+                        />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="idProperty" type="xsd:ID" use="required" />
+        <xsd:attribute name="owner-id" type="xsd:IDREF" use="optional" />
+    </xsd:complexType>
+
+
+    <xsd:complexType name="flat">
+        <xsd:sequence>
+            <xsd:element name="nom">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:minLength value="5" />
+                        <xsd:maxLength value="100" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="description">
+                <xsd:complexType mixed="true">
+                    <xsd:sequence>
+                        <xsd:element name="ownerRef" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType mixed="true">
+                                <xsd:attribute name="ownerId" type="xsd:IDREF" />
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="propertyRef" minOccurs="0" maxOccurs="unbounded">
+                            <xsd:complexType mixed="true">
+                                <xsd:attribute name="propertyId" type="xsd:IDREF" />
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="tarif" type="xsd:nonNegativeInteger" />
+            <xsd:element name="features" type="features" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="idFlat" use="required">
+            <xsd:simpleType>
+                <xsd:union>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:pattern value="[fF][0-9]{1,5}" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:pattern value="([A-Za-z0-9]{1,10})?[A-Za-z0-9_][A-Za-z0-9._-]*" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:union>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="property-id" type="xsd:IDREF" use="required" />
+        <xsd:attribute name="niveau-confort" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="A" />
+                    <xsd:enumeration value="B" />
+                    <xsd:enumeration value="C" />
+                    <xsd:enumeration value="D" />
+                    <xsd:enumeration value="E" />
+                    <xsd:enumeration value="F" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="date-mise-ligne" type="xsd:date" use="optional" />
+    </xsd:complexType>
+
+
+    <xsd:element name="adresse">
+        <xsd:complexType>
+            <xsd:choice>
+                <xsd:element name="adresse-pays">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="rue" type="xsd:string" />
+                            <xsd:element name="code-postal">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:pattern value="[0-9]{5}" />
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                            <xsd:element name="ville" type="xsd:string" />
+                            <xsd:element name="pays" type="xsd:string" />
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="adresse-sans-pays">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="rue" type="xsd:string" />
+                            <xsd:element name="ville" type="xsd:string" />
+                            <xsd:element name="code-postal">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:pattern value="[0-9]{5}" />
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

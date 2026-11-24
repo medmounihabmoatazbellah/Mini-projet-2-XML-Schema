@@ -1,0 +1,9 @@
+{
+  "xml.downloads.enabled": true,
+  "xml.fileAssociations": [
+    {
+      "pattern": "**/etape9/real-estate.xsd",
+      "systemId": "https://w3.org"
+    }
+  ]
+}
