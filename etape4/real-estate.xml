@@ -4,7 +4,7 @@
     <agencies>
         <agency>
             <nom>Best Maison</nom>
-            <address-electronique>info@bestmaison.com</address-electronique>
+            <address-electronique>bestmaison@gmail.com</address-electronique>
             <numero-telephone>0612345678</numero-telephone>
         </agency>
         <agency>
@@ -19,23 +19,23 @@
         </owner>
     </owners>
     <properties>
-        <property id="1">
+        <property id="p1">
             <nom>Rue Amir Abdel Kader</nom>
             <nombre-appartements>2</nombre-appartements>
         </property>
-        <property id="2" owner-id="mohammed">
+        <property id="p2" owner-id="mohammed">
             <nom>Rue liberte</nom>
             <nombre-appartements>1</nombre-appartements>
         </property>
     </properties>
     <flats>
-        <flat id="1" property-id="1" niveau-confort="moyen">
-            <nom>4B</nom>
+        <flat id="f1" property-id="p1" niveau-confort="C">
+            <nom>4B local</nom>
             <description>maison traditionnelle</description>
             <tarif>1500</tarif>
         </flat>
-        <flat id="2" property-id="1" niveau-confort="haut"  date-mise-ligne="2024-06-01">
-            <nom>2A</nom>
+        <flat id="f2" property-id="p1" niveau-confort="A"  date-mise-ligne="2024-06-01">
+            <nom>2A opgi</nom>
             <description>maison moderne</description>
             <tarif>3000</tarif>
         </flat>

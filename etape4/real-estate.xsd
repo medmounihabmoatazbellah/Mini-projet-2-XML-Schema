@@ -42,14 +42,14 @@
             <xsd:element name="address-electronique">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:pattern value="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                        <xsd:pattern value="[^\s@]+@[^\s@]+\.[^\s@]+" />
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="numero-telephone">
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:pattern value="^0[23567][0-9]{8}$" />
+                        <xsd:pattern value="0[23567][0-9]{8}" />
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
@@ -60,7 +60,7 @@
             <xsd:element name="nom">                    
                 <xsd:simpleType>
                     <xsd:restriction base="xsd:string">
-                        <xsd:pattern value="^[\p{L}\s'\-]{2,50}$"/>
+                        <xsd:pattern value="[\p{L}\s'\-]{2,50}"/>
                     </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
