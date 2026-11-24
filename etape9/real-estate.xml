@@ -53,7 +53,7 @@
                 </adresse-sans-pays>
             </adresse>
         </property>
-        <property idProperty="p2" owner-id="mohammed">
+        <property idProperty="p2" ownerRef="mohammed">
             <nom>Rue liberte</nom>
             <nombre-appartements>1</nombre-appartements>
             <features category="enface-ecole moderne haut haut">

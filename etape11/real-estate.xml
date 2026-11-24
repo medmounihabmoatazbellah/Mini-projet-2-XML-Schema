@@ -1,0 +1,141 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<real-estate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://example.com">
+
+    <agencies>
+        <agency>
+            <nom>Best Maison</nom>
+            <numero-telephone>0612345678</numero-telephone>
+            <address-electronique>bestmaison@gmail.com</address-electronique>
+            <adresse>
+                <adresse-sans-pays>
+                    <rue>Rue de la paix</rue>
+                    <ville>Alger</ville>
+                    <code-postal>20000</code-postal>
+                </adresse-sans-pays>
+            </adresse>
+        </agency>
+        <agency>
+            <address-electronique>info@immobieli.com</address-electronique>
+            <nom>immobieli</nom>
+            <numero-telephone>0687654321</numero-telephone>
+            <adresse>
+                <adresse-pays>
+                    <rue>Rue de la liberté</rue>
+                    <code-postal>10000</code-postal>
+                    <ville>Oran</ville>
+                    <pays>Algeria</pays>
+                </adresse-pays>
+            </adresse>
+        </agency>
+    </agencies>
+    <owners>
+        <owner id='mohammed'>
+            <nom>Mohammed</nom>
+            <adresse>
+                <adresse-sans-pays>
+                    <rue>Rue de la paix</rue>
+                    <ville>Alger</ville>
+                    <code-postal>20000</code-postal>
+                </adresse-sans-pays>
+            </adresse>
+        </owner>
+    </owners>
+    <properties>
+        <property idProperty="p1">
+            <nom>Rue Amir Abdel Kader</nom>
+            <nombre-appartements>2</nombre-appartements>
+            <adresse>
+                <adresse-sans-pays>
+                    <rue>Rue Amir Abdel Kader</rue>
+                    <ville>Alger</ville>
+                    <code-postal>20000</code-postal>
+                </adresse-sans-pays>
+            </adresse>
+        </property>
+        <property idProperty="p2" ownerRef="mohammed">
+            <nom>Rue liberte</nom>
+            <nombre-appartements>1</nombre-appartements>
+            <features category="enface-ecole moderne haut haut">
+                <feature>centre ville</feature>
+                <feature>plusieur etages</feature>
+                <feature>complete</feature>
+                <feature>certifie</feature>
+                <feature>calme</feature>
+            </features>
+            <adresse>
+                <adresse-pays>
+                    <rue>Rue liberte</rue>
+                    <code-postal>10000</code-postal>
+                    <ville>Oran</ville>
+                    <pays>Algeria</pays>
+                </adresse-pays>
+            </adresse>
+            <description>
+                <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+                    <head>
+                        <title>Valid XHTML Page</title>
+                    </head>
+                    <body>
+                        <h1>Welcome</h1>
+                        <p>This is a paragraph with <strong>bold</strong> and <em>italic</em> text.</p>
+                        <p> Self-closing tags must end with a slash:<br />
+      <img src="photo.jpg"
+                                alt="Sample photo" />
+                        </p>
+                        <ul>
+                            <li>First item</li>
+                            <li>Second item</li>
+                        </ul>
+                    </body>
+                </html>
+            </description>
+        </property>
+        <property idProperty="p3" xsi:type="skyscraper" ownerRef="mohammed" numberOfFloors="30">
+            <nom>entreprise</nom>
+            <nombre-appartements>150</nombre-appartements>
+            <adresse>
+                <adresse-sans-pays>
+                    <rue>APC national</rue>
+                    <ville>Tiaret</ville>
+                    <code-postal>54093</code-postal>
+                </adresse-sans-pays>
+            </adresse>
+        </property>
+        <property idProperty="p4" xsi:type="cottage">
+            <nom>cottage</nom>
+            <nombre-appartements>1</nombre-appartements>
+            <adresse>
+                <adresse-sans-pays>
+                    <rue>foret national</rue>
+                    <ville>Tiaret</ville>
+                    <code-postal>56693</code-postal>
+                </adresse-sans-pays>
+            </adresse>
+        </property>
+    </properties>
+
+
+    <flats>
+        <flat idFlat="f1" property-id="p1" niveau-confort="C">
+            <nom>4B local</nom>
+            <description>maison traditionnelle</description>
+            <tarif>1500</tarif>
+        </flat>
+        <flat idFlat="2Aopgip1" property-id="p1" niveau-confort="A" date-mise-ligne="2024-06-01">
+            <nom>2A opgi</nom>
+            <description>maison moderne dans par <ownerRef ownerId="mohammed">mohammed
+                </ownerRef>exemple1<propertyRef propertyId="p1">Rue Amir
+                Abdel
+                    Kader</propertyRef>
+            </description>
+            <tarif>3000</tarif>
+            <features category="entrance non-equipe moyan moyen">
+                <feature>cuisine</feature>
+                <feature>salon</feature>
+                <feature>chambre</feature>
+            </features>
+        </flat>
+    </flats>
+</real-estate>

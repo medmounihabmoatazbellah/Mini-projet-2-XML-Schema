@@ -135,9 +135,8 @@
             </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="idProperty" type="xsd:ID" use="required" />
-        <xsd:attribute name="owner-id" type="xsd:IDREF" use="optional" />
+        <xsd:attribute name="ownerRef" type="xsd:IDREF" use="optional" />
     </xsd:complexType>
-
 
     <xsd:complexType name="flat">
         <xsd:sequence>
